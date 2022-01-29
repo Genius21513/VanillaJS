@@ -1,0 +1,53 @@
+{
+    "name": "@data/aaconnector",
+    "version": "2.0.1",
+    "description": "Please refer to README.md",
+    "main": "./src/index.js",
+    "type": "module",
+    "scripts": {
+        "prepare": "husky install",
+        "docs:build": "vuepress build docs",
+        "docs:dev": "vuepress dev docs",
+        "ci:lint": "npx eslint .",
+        "lint": "npx eslint --fix .",
+        "ci:test": "npx jest --collect-coverage --verbose",
+        "test": "npx jest --collect-coverage --watchAll --verbose"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:alarraga/aa-connector.git"
+    },
+    "author": "Aka",
+    "contributors": [
+        {
+            "name": "Scott Wienke",
+            "email": "scott@legendcorp.com"
+        }
+    ],
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com/"
+    },
+    "license": "UNLICENSED",
+    "homepage": "",
+    "dependencies": {
+        "lodash.mergewith": "^4.6.2",
+        "md5": "^2.3.0",
+        "web-vitals": "^2.1.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.14.0",
+        "@babel/preset-env": "^7.14.1",
+        "@vuepress/plugin-back-to-top": "^1.8.2",
+        "babel-jest": "^27.2.4",
+        "eslint": "^7.25.0",
+        "eslint-config-standard": "^16.0.0",
+        "eslint-plugin-import": "^2.22.1",
+        "eslint-plugin-jest": "^24.3.6",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-promise": "^5.1.0",
+        "husky": "^7.0.2",
+        "jest": "^27.2.4",
+        "markdown-it-footnote": "^3.0.2",
+        "vuepress": "^1.8.2"
+    }
+}
