@@ -1,7 +1,6 @@
 import { appendParamToLink, generateTransactionId, isAffLink } from "../../utilities";
 import initButtonClickEvent from "./init-button-click-event";
 import initLinkClickEvent from "./init-link-click-event";
-// import emitproductListImpression from "../ecommerce/emit-product-view";
 
 const addClickEventListener = (config) => {
     const clickEventTypes = ["click", "auxclick"];
@@ -19,11 +18,6 @@ const addClickEventListener = (config) => {
                 }
 
                 initLinkClickEvent({ link, linkIsAffLink, transactionId }, config);
-
-                // Emit productListImpression
-                // emitproductListImpression({
-                //     value: "test",
-                // });
             }
 
             const button = event.target.closest("button");
