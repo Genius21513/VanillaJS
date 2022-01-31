@@ -7,6 +7,12 @@ const addClickEventListener = (config) => {
 
     clickEventTypes.forEach((clickEventType) => {
         document.body.addEventListener(clickEventType, (event) => {
+
+            // form is returned
+            let pNode = event.target.closest('form');
+            if (pNode) return;
+            
+            //a tag
             const link = event.target.closest("a");
 
             if (link !== null) {
@@ -20,6 +26,7 @@ const addClickEventListener = (config) => {
                 initLinkClickEvent({ link, linkIsAffLink, transactionId }, config);
             }
 
+            //button
             const button = event.target.closest("button");
 
             if (link === null && button !== null) {

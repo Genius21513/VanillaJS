@@ -23,9 +23,9 @@ export default {
     },
     methods:{
         fireEvent:()=>{
-            let evt = new EcomEvents();
-            evt.registerProductListImpression({test:'hello'})
-            console.log('testFire');
+            // let evt = new EcomEvents();
+            // evt.registerProductListImpression({test:'hello'})
+            // console.log('testFire');
         }
     }
 }

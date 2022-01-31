@@ -23,7 +23,6 @@ const addVideoEventListener = (config) => {
         { eventNumber: 17, name: 'videoResumed' }
 
     ]
-    console.log("heeere")
 
     window._wq = window._wq || []
     
