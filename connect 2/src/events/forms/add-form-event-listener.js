@@ -1,34 +1,27 @@
-import { getPersistentSiteData, getElementAttributeValue } from '../../utilities/'
-import emitEvent from '../emit-event'
+import { getElementAttributeValue } from '../../utilities/'
+import completedFormEvent from './completed-form-event';
+import initFormEvent from './init-form-event';
 
 const addFormEventListener = (config) => {
     const formEventTypes = ["change", "submit"];
 
+    window.initForms = window.initForms || []
+    window.completedForms = window.completedForms || []
+
     formEventTypes.forEach((formEventType) => {
         document.body.addEventListener(formEventType, (event) => {
-            let pNode = event.target.closest('form');
-            
-            // pNode is form
-            if (pNode) {
-                const formName = getElementAttributeValue(pNode, 'data-form-track');
+            let form = event.target.closest('form');
+            let formName = getElementAttributeValue(form, 'data-form-track');
 
-                if (formName === null) return;
-
-                const eventType = 'o'
-                const eventName = formEventType==="submit"? "Form Completed" : "Form Initiated"
-
-                const formData = {
-                    ...getPersistentSiteData(),
-                    eVar66: formName,
-                    event20: eventName,
-                }
-            
-                emitEvent({
-                    debug: config.debug,
-                    eventData: formData,
-                    eventName: eventName,
-                    eventType
-                })
+            // if form is true
+            if (form && formName) {
+                formEventType==="change"?
+                    initFormEvent({form, formName}, config)
+                    :''
+                formEventType==="submit"? 
+                    completedFormEvent({form, formName}, config)
+                    :'';
+                
             }
         });
     });

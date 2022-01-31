@@ -1,24 +1,27 @@
 import {
-    getElementAttributeValue,    
-    getPersistentSiteData,    
+    getElementAttributeValue,
+    getPersistentSiteData,
 } from '../../utilities/'
 import emitEvent from '../emit-event'
 
-const initFormEvent = ({ form }, config) => {
-    const formName = getElementAttributeValue(form, 'data-form-track')
+const initFormEvent = ({ form, formName}, config) => {
+    const listInitForms = window.initForms || [];
+    if (listInitForms.includes(formName)) return;
+    window.initForms.push(formName);
 
     const eventType = 'o'
+    const eventName = "Form Initiated"
 
     const formData = {
         ...getPersistentSiteData(),
         eVar66: formName,
-        event20: "Form initiated",
+        event20: eventName,
     }
 
     emitEvent({
         debug: config.debug,
         eventData: formData,
-        eventName: 'Form Initiated',
+        eventName: eventName,
         eventType
     })
 }
